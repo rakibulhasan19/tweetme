@@ -1,5 +1,42 @@
 {% extends 'base.html'%}
+{% block title%}
+ this is amazing...
+{% endblock title%}
 
 {% block content %}
     welcome to tweetme 2
+    <div id="tweet"></div>
+    <script>
+    var formattedTweets = function(tweet){
+        formatTweetstr = "<div class='md-4 tweet'id='tweet-"+tweet.id+"'>" + "<p>" + tweet.contant +"</p><div  class=btn-group>" +LikeBtn(tweet) + "</div></div>"
+        return formatTweetstr
+    }
+    function heandlerLike(tweet_id,currentCount){
+        console.log(tweet_id,currentCount)
+    }
+    let tweetElememt = document.getElementById("tweet")
+    tweetElememt.innerHTML = 'Loading....'
+    const xhr = new XMLHttpRequest();
+    const method = 'GET'
+    const url = "/tweet"
+    function LikeBtn(tweet){
+        return "<button onclick=heandlerLike("+ tweet.id +","+ tweet.likes +") class='btn btn-primary'>"+tweet.likes+" Like</button>"
+    }
+    const responseType = "json"
+    xhr.responseType = responseType
+    xhr.open(method,url)
+    xhr.onload = function(){
+        const serverResponse = xhr.response
+        var listItems = serverResponse.response
+        var finalTweetStr = " "
+        var i;
+        for (i=0;i<listItems.length; i++){
+          
+            var currentElement = formattedTweets(listItems[i])
+                finalTweetStr += currentElement
+        }
+        tweetElememt.innerHTML =  finalTweetStr
+    }
+    xhr.send()
+    </script>
 {% endblock content %}
