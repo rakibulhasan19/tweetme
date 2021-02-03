@@ -4,11 +4,16 @@
 {% endblock title%}
 
 {% block content %}
-    welcome to tweetme 2
-    <div id="tweet"></div>
+    <div class="row text-center">
+        <div class="col">
+            <h3> welcome to tweetme 2</h3>
+        </div>
+    </div>
+   
+    <div class="row" id="tweet"></div>
     <script>
     var formattedTweets = function(tweet){
-        formatTweetstr = "<div class='md-4 tweet'id='tweet-"+tweet.id+"'>" + "<p>" + tweet.contant +"</p><div  class=btn-group>" +LikeBtn(tweet) + "</div></div>"
+        formatTweetstr = "<div class='col-12 border-top border-bottom py-3 md-4 tweet'id='tweet-"+tweet.id+"'>" + "<p>" + tweet.contant +"</p><div  class=btn-group>" +LikeBtn(tweet) + "</div></div>"
         return formatTweetstr
     }
     function heandlerLike(tweet_id,currentCount){
