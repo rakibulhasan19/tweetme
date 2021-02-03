@@ -5,6 +5,8 @@ import random
 class Tweets (models.Model):
     contant = models.TextField(blank=True,null=True)
     image = models.FileField(upload_to='image/',blank=True,null=True)
+    class Meta:
+        ordering=['-id']
     def serializ(self):
         return{
             "id":self.id,
