@@ -25,7 +25,7 @@ SECRET_KEY = 'is5h(v9%^is(e9i3h*6^h&$1jgj5os2omkq)ehf@0rm^n+ew2)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','saimun.com']
 
 
 # Application definition
